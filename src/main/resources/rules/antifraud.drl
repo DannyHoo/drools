@@ -1,0 +1,30 @@
+package com.danny.drools;
+
+import com.danny.drools.entity.RiskInfoStatisticResult;
+import com.danny.drools.entity.AntiFraudRecord;
+rule one_day_login_number
+	// 用户一天内登录次数小于20
+	salience 100
+	lock-on-active true
+	when
+		$riskInfoStatisticResult:RiskInfoStatisticResult($riskInfoStatisticResult.statisticResult<=30)
+		$antiFraudRecord:AntiFraudRecord()
+	then
+	    $antiFraudRecord.setAntiFraudResult(true);
+	    update($antiFraudRecord)
+	    System.out.println("执行反欺诈规则one_day_login_number结果：通过");
+end
+
+
+rule one_day_ip_number
+	// 当前设备一天之内使用ip数量小于20
+	salience 99
+	lock-on-active true
+	when
+		$riskInfoStatisticResult:RiskInfoStatisticResult($riskInfoStatisticResult.statisticResult<=10)
+		$antiFraudRecord:AntiFraudRecord()
+	then
+	    $antiFraudRecord.setAntiFraudResult(true);
+	    update($antiFraudRecord)
+	    System.out.println("执行反欺诈规则one_day_ip_number结果：通过");
+end

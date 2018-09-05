@@ -1,12 +1,11 @@
 package com.danny.drools.entity;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: AntiFraudRuleGroup
- * @Copyright: Copyright (c) 2016
+ * @Copyright: Copyright (c) 2018
  * @Description: 反欺诈规则组
- * @Company: lxjr.com
- * @Created on 2016-12-18 16:34:23
+ * @Created on 2018-08-18 16:34:23
  */
 public class AntiFraudRuleGroup extends BaseEntity{
     private String id;

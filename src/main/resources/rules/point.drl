@@ -1,0 +1,185 @@
+package com.danny.drools
+
+import com.danny.drools.points.PointDomain
+
+/* 当日购物次数规则 */
+rule point_buy_nums_less_than_0
+	// 当日购物次数为0，增加0积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums<=0)
+    then
+        $pointDomain.addPoint(0);
+        update($pointDomain)
+end
+
+rule point_buy_nums_less_than_5
+	// 当日购物次数为1~5，增加1积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums>0 && buyNums<=5)
+    then
+        $pointDomain.addPoint(1);
+        update($pointDomain)
+
+end
+
+rule point_buy_nums_less_than_10
+	// 当日购物次数为5~10，增加3积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums>0 && buyNums<=10)
+    then
+        $pointDomain.addPoint(3);
+        update($pointDomain)
+end
+
+rule point_buy_nums_more_than_10
+	// 当日购物次数大于10，增加5积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums>10)
+    then
+        $pointDomain.addPoint(5);
+        update($pointDomain)
+end
+
+/* 当日购物金额规则 */
+rule point_buy_money_less_than_0
+	// 当日购物金额为0，增加0积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney<=0)
+    then
+        $pointDomain.addPoint(0);
+        update($pointDomain)
+end
+
+rule point_buy_money_less_than_100
+	// 当日购物金额为0~100时，增加1积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney>0 && buyMoney<=100)
+    then
+        $pointDomain.addPoint(1);
+        update($pointDomain)
+end
+
+rule point_buy_money_less_than_500
+	// 当日购物金额为100~500时，增加3积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney>100 && buyMoney<=500)
+    then
+        $pointDomain.addPoint(3);
+        update($pointDomain)
+end
+
+rule point_buy_money_more_than_500
+	// 当日购物金额为大于500时，增加5积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney>=500)
+    then
+        $pointDomain.addPoint(5);
+        update($pointDomain)
+end
+
+/* 当日退货次数规则 */
+rule point_back_nums_less_than_0
+	// 当日退货次数为0，减少0积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums<=0)
+    then
+        $pointDomain.subtractPoint(0);
+        update($pointDomain)
+end
+
+rule point_back_nums_less_than_5
+	// 当日退货次数为1~5，减少1积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums>0 && buyNums<=5)
+    then
+        $pointDomain.subtractPoint(1);
+        update($pointDomain)
+
+end
+
+rule point_back_nums_less_than_10
+	// 当日退货次数为5~10，减少3积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums>0 && buyNums<=10)
+    then
+        $pointDomain.subtractPoint(3);
+        update($pointDomain)
+end
+
+rule point_back_nums_more_than_10
+	// 当日退货次数大于10，减少5积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyNums>10)
+    then
+        $pointDomain.subtractPoint(5);
+        update($pointDomain)
+end
+
+/* 当日退货金额规则 */
+rule point_back_money_less_than_0
+	// 当日退货金额为0，减少0积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney<=0)
+    then
+        $pointDomain.subtractPoint(0);
+        update($pointDomain)
+end
+
+rule point_back_money_less_than_100
+	// 当日退货金额为0~100时，减少1积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney>0 && buyMoney<=100)
+    then
+        $pointDomain.subtractPoint(1);
+        update($pointDomain)
+end
+
+rule point_back_money_less_than_500
+	// 当日退货金额为100~500时，减少3积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney>100 && buyMoney<=500)
+    then
+        $pointDomain.subtractPoint(3);
+        update($pointDomain)
+end
+
+rule point_back_money_more_than_500
+	// 当日退货金额为大于500时，减少5积分
+    salience 100
+    lock-on-active true
+    when
+        $pointDomain:PointDomain(buyMoney>=500)
+    then
+        $pointDomain.subtractPoint(5);
+        update($pointDomain)
+end

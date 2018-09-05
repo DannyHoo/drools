@@ -1,12 +1,11 @@
 package com.danny.drools.entity;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: AntiFraudRecord
- * @Copyright: Copyright (c) 2016
+ * @Copyright: Copyright (c) 2018
  * @Description: 反欺诈记录
- * @Company: lxjr.com
- * @Created on 2016-12-23 18:26:40
+ * @Created on 2018-08-23 18:26:40
  */
 public class AntiFraudRecord {
     private String id;

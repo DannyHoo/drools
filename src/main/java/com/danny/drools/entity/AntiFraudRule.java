@@ -3,12 +3,11 @@ package com.danny.drools.entity;
 import java.util.Date;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: AntiFraudRule
- * @Copyright: Copyright (c) 2016
+ * @Copyright: Copyright (c) 2018
  * @Description: 反欺诈规则
- * @Company: lxjr.com
- * @Created on 2016-12-18 16:34:09
+ * @Created on 2018-08-18 16:34:09
  */
 public class AntiFraudRule extends BaseEntity{
     private String id;//

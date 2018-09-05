@@ -1,4 +1,4 @@
-package com.danny.drools.service;
+package com.danny.drools.antifraud;
 
 import com.danny.drools.entity.AntiFraudRecord;
 import com.danny.drools.entity.AntiFraudRule;
@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: ExecutorByDRL
- * @Copyright: Copyright (c) 2016
- * @Description:
+ * @Copyright: Copyright (c) 2018
+ * @Description: 反欺诈规则测试（执行drl规则）
  * 前提条件
  * 反欺诈、授信的基础就是数据，所以要建立在已经有基础数据（设备信息、手机号信息、用户行为信息等）的基础上。
  * 反欺诈流程
@@ -27,8 +27,7 @@ import java.util.List;
  *          3-1、根据当前产品和触发动作查询当前反欺诈模型关联的所有反欺诈规则
  *          3-2、把风险信息统计结果与反欺诈规则逐一对比，由Drools引擎执行。需要传入规则实体、风险信息统计结果实体、反欺诈结果实体。
  *          3-3、最终每个规则的比对结果可以从反欺诈结果实体中获得。
- * @Company: lxjr.com
- * @Created on 2016-12-23 16:02:17
+ * @Created on 2018-08-23 16:02:17
  */
 public class ExecutorByDRL {
     //风险信息统计规则
@@ -112,13 +111,13 @@ public class ExecutorByDRL {
         riskInfoStatisticResult1.setId("1");
         riskInfoStatisticResult1.setRiskInfoStatisticRuleId("1");
         riskInfoStatisticResult1.setRuleKey("one_day_login_number");
-        riskInfoStatisticResult1.setStatisticResult(20);//当前用户一天之内登录次数为20次
+        riskInfoStatisticResult1.setStatisticResult(30);//当前用户一天之内登录次数为20次
 
         RiskInfoStatisticResult riskInfoStatisticResult2=new RiskInfoStatisticResult();
         riskInfoStatisticResult2.setId("2");
         riskInfoStatisticResult2.setRiskInfoStatisticRuleId("2");
         riskInfoStatisticResult2.setRuleKey("one_day_ip_number");
-        riskInfoStatisticResult2.setStatisticResult(2);//当前设备一天之内使用ip数量为20
+        riskInfoStatisticResult2.setStatisticResult(10);//当前设备一天之内使用ip数量为20
 
         riskInfoStatisticResultList.add(riskInfoStatisticResult1);
         riskInfoStatisticResultList.add(riskInfoStatisticResult2);
@@ -133,15 +132,15 @@ public class ExecutorByDRL {
         AntiFraudRule antiFraudRule1=new AntiFraudRule();
         antiFraudRule1.setId("1");
         antiFraudRule1.setRiskInfoStatisticRuleId("1");//反欺诈规则对应风险信息统计规则id
-        antiFraudRule1.setRuleKey("one_day_ip_number");//规则标识，来自于对应的风险信息统计规则
-        antiFraudRule1.setAntiFraudRuleName("过去24小时设备使用IP数量小于10");
+        antiFraudRule1.setRuleKey("one_day_login_number");//规则标识，来自于对应的风险信息统计规则
+        antiFraudRule1.setAntiFraudRuleName("用户一天内登录次数小于20");
         antiFraudRule1.setRuleContent("");//Drools语法规定的规则内容
 
         AntiFraudRule antiFraudRule2=new AntiFraudRule();
         antiFraudRule2.setId("2");
         antiFraudRule2.setRiskInfoStatisticRuleId("2");
-        antiFraudRule2.setRuleKey("one_day_login_number");
-        antiFraudRule2.setAntiFraudRuleName("用户一天内登录次数小于20");
+        antiFraudRule2.setRuleKey("one_day_ip_number");
+        antiFraudRule2.setAntiFraudRuleName("过去24小时设备使用IP数量小于10");
         antiFraudRule2.setRuleContent("");
 
         antiFraudRuleList.add(antiFraudRule1);

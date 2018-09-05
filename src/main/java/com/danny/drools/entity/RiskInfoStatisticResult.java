@@ -2,12 +2,11 @@ package com.danny.drools.entity;
 
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: RiskInfoStatisticResult
- * @Copyright: Copyright (c) 2016
+ * @Copyright: Copyright (c) 2018
  * @Description: 风险信息统计结果
- * @Company: lxjr.com
- * @Created on 2016-12-23 16:15:20
+ * @Created on 2018-08-23 16:15:20
  */
 public class RiskInfoStatisticResult extends BaseEntity{
     private String id;

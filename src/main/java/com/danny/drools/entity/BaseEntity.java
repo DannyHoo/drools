@@ -3,12 +3,11 @@ package com.danny.drools.entity;
 import java.util.Date;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: BaseEntity
- * @Copyright: Copyright (c) 2016
+ * @Copyright: Copyright (c) 2018
  * @Description: 实体抽象字段
- * @Company: lxjr.com
- * @Created on 2016-12-23 15:19:01
+ * @Created on 2018-08-23 15:19:01
  */
 public class BaseEntity {
     private String comment;//描述

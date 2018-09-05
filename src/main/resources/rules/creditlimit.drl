@@ -1,0 +1,29 @@
+package com.danny.drools;
+
+import com.danny.drools.entity.RiskInfoStatisticResult;
+import com.danny.drools.entity.CreditLimitRecord;
+rule three_month_consume
+	// 近3个月消费总额大于10000，则加20分
+	salience 100
+	lock-on-active true
+	when
+		$riskInfoStatisticResult:RiskInfoStatisticResult($riskInfoStatisticResult.statisticResult>=10000)
+		$creditLimitRecord:CreditLimitRecord()
+	then
+	    $creditLimitRecord.setCreditLimitResult($creditLimitRecord.getCreditLimitResult()+20);
+	    update($creditLimitRecord)
+	    System.out.println("执行授信规则three_month_consume结果：通过");
+end
+
+rule three_month_night
+	// 最近3个月夜消费次数小于10次，则加30分
+	salience 99
+	lock-on-active true
+	when
+    		$riskInfoStatisticResult:RiskInfoStatisticResult($riskInfoStatisticResult.statisticResult<=10)
+    		$creditLimitRecord:CreditLimitRecord()
+    	then
+    	    $creditLimitRecord.setCreditLimitResult($creditLimitRecord.getCreditLimitResult()+30);
+    	    update($creditLimitRecord)
+    	    System.out.println("执行授信规则three_month_night结果：通过");
+end

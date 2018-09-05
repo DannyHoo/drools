@@ -1,12 +1,10 @@
 package com.danny.drools.entity;
 
 /**
- * @author huyuyang@lxfintech.com
+ * @author Danny
  * @Title: AntiFraudModel
- * @Copyright: Copyright (c) 2016
  * @Description: 反欺诈模型
- * @Company: lxjr.com
- * @Created on 2016-12-23 15:26:20
+ * @Created on 2018-08-23 15:26:20
  */
 public class AntiFraudModel  extends BaseEntity{
     private String id;
